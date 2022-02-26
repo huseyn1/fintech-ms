@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -19,15 +17,21 @@ import javax.persistence.Table;
 public class User {
 
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.GUIDGenerator")
     private String id;
 
-    @Column(name = "pin")
+    @Column(name = "PIN", unique = true)
     private String pin;
 
-    @Column(name = "first_name")
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "LAST_NAME")
+    private String lastName;
 
 
 }

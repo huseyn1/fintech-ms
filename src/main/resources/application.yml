@@ -9,7 +9,7 @@ spring:
   main:
     banner-mode: off
   datasource:
-    url: jdbc:mysql://localhost:3306/fintech_db
+    url: jdbc:mysql://localhost:3306/fintech_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: mysql
   liquibase:
