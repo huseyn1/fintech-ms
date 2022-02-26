@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /fintech-ms
+
+spring:
+  application:
+    name: fintech-ms
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/fintech_db
+    username: root
+    password: mysql
+  liquibase:
+    database-change-log-table: MS_FINTECH_DBCHANGELOG
+    database-change-log-lock-table: MS_FINTECH_DBCHANGELOGLOCK
+    change-log: classpath:liquibase/changelog-master.xml
