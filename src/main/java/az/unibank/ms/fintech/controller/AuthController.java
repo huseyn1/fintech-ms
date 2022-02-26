@@ -20,9 +20,9 @@ public class AuthController {
     }
 
     @PostMapping("/regsiter")
-    public ResponseEntity<UserdDto> registration(@RequestBody UserDto userDto ) {
+    public ResponseEntity<UserdDto> registration(@RequestBody UserdDto userDto ) {
 
-
+      return new ResponseEntity<>(userDto,HttpStatus.OK);
     }
 
 }
