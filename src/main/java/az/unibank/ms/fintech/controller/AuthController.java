@@ -1,28 +1,27 @@
 package az.unibank.ms.fintech.controller;
 
 import az.unibank.ms.fintech.dto.UserdDto;
-import az.unibank.ms.fintech.entity.User;
+import az.unibank.ms.fintech.service.AuthenticationService;
 import lombok.AllArgsConstructor;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("v1/auth")
 public class AuthController {
 
-    @GetMapping("/first-controller")
-    public ResponseEntity<User> getFirstController(){
-        return new ResponseEntity<>(User.builder().firstName("Huseyn").build(), HttpStatus.OK);
-    }
+    private final AuthenticationService authenticationService;
 
-    @PostMapping("/regsiter")
-    public ResponseEntity<UserdDto> registration(@RequestBody UserdDto userDto ) {
+    @PostMapping("/registration")
+    public ResponseEntity<String> registration(@RequestBody UserdDto userDto) {
 
-      return new ResponseEntity<>(userDto,HttpStatus.OK);
+        return new ResponseEntity<>(authenticationService.registration(userDto),
+                HttpStatus.OK);
     }
 
 }

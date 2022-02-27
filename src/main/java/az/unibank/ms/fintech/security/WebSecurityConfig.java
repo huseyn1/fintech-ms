@@ -1,4 +1,4 @@
-package az.unibank.ms.fintech.config;
+package az.unibank.ms.fintech.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
                 .anyRequest()
-                .permitAll();
+                .permitAll()
+                 .and()
+                .formLogin()
+                .usernameParameter("pin")
+                .passwordParameter("password");
 
     }
 }

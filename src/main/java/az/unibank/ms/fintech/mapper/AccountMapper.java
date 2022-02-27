@@ -1,11 +1,13 @@
 package az.unibank.ms.fintech.mapper;
 
-import az.unibank.ms.fintech.dto.UserdDto;
-import az.unibank.ms.fintech.entity.User;
+import az.unibank.ms.fintech.dto.AccountDto;
+import az.unibank.ms.fintech.entity.Account;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.ReportingPolicy;
+
+import java.util.List;
 
 @Mapper(
         componentModel = "spring",
@@ -13,9 +15,10 @@ import org.mapstruct.ReportingPolicy;
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
-public interface UserMapper {
+public interface AccountMapper {
 
-    User mapUserDtoToEntity(UserdDto userdDto);
+    AccountDto accountEntityToDto(Account account);
 
-    UserdDto mapUserEntityToDto(User user);
+    List<AccountDto> accountEntityListToDtoList(List<Account> accounts);
+
 }
