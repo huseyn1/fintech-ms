@@ -20,7 +20,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountDto> getAccounts(String pin) {
         var accounts =accountRepository
-                .findAccountsByAccountNumberAndStatus(pin,"ACTIVE");
+                .findAccountsByPinAndStatus(pin,"ACTIVE");
         if (accounts.isEmpty()){
             throw new RecordNotFoundException(pin + "dont have active accounts");
         }

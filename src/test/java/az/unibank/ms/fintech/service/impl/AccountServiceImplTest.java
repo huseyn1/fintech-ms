@@ -37,7 +37,7 @@ public class AccountServiceImplTest {
     void shouldReturnActiveAccounts_whenSuccessDataFound() {
         String pin = "AAA1111";
         String status = "ACTIVE";
-        when(accountRepository.findAccountsByAccountNumberAndStatus(pin,status))
+        when(accountRepository.findAccountsByPinAndStatus(pin,status))
                 .thenReturn(MockData.getAccounts());
         when(accountMapper.accountEntityListToDtoList(MockData.getAccounts()))
                 .thenReturn(MockData.getAccountDtos());
@@ -53,7 +53,7 @@ public class AccountServiceImplTest {
         String pin = "111AAAA";
         String status = "DEACTIVE";
 
-        when(accountRepository.findAccountsByAccountNumberAndStatus(pin,status))
+        when(accountRepository.findAccountsByPinAndStatus(pin,status))
                 .thenReturn(Collections.emptyList());
         when(accountMapper.accountEntityListToDtoList(MockData.getAccounts()))
                 .thenReturn(Collections.emptyList());

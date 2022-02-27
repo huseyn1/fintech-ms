@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AccountRepository extends JpaRepository<Account,String> {
 
-    List<Account> findAccountsByAccountNumberAndStatus(String accountNumber,String status);
+    List<Account> findAccountsByPinAndStatus(String pin,String status);
 
 }
